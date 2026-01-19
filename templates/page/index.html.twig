@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Accueil{% endblock %}
+
+{% block body %}
+
+<div>
+    <h1>Bienvenue sur notre site !</h1>
+
+    <h2>Nos derniers articles</h2>
+
+    <section>
+        {% for post in posts %}
+            <article>
+                <h3>{{ post.title }}</h3>
+                <p>{{ post.createdAt|date('d/m/Y') }}</p>
+                <a href="{{ path('app_post_show', {'id': post.id}) }}">Lire la suite</a>
+            </article>
+        {% endfor %}
+    </section>
+
+    <a href="{{ path('app_about') }}">Lien vers à propos</a>
+
+</div>
+{% endblock %}
